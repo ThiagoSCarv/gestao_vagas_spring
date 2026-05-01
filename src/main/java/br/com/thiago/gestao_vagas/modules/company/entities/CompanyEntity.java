@@ -12,10 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
@@ -36,8 +35,7 @@ public class CompanyEntity {
   private String email;
 
   @NotBlank
-  @Min(8)
-  @Max(20)
+  @Size(min = 8, max = 100, message = "A senha deve ter entre 8 e 100 caracteres")
   private String password;
 
   private String website;
