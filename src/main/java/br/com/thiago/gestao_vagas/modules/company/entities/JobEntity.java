@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -33,6 +34,7 @@ public class JobEntity {
   @JoinColumn(name = "id_company", insertable = false, updatable = false)
   private CompanyEntity company;
 
+  @NotNull
   @Column(name = "id_company")
   private UUID idCompany;
 
