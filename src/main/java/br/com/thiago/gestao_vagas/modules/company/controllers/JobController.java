@@ -12,6 +12,7 @@ import br.com.thiago.gestao_vagas.modules.company.useCases.CreateJobUseCase;
 
 import jakarta.validation.Valid;
 
+// Controller responsável pelos endpoints de vagas
 @RestController
 @RequestMapping("/job")
 public class JobController {
@@ -19,6 +20,8 @@ public class JobController {
   @Autowired
   private CreateJobUseCase createJobUseCase;
 
+  // POST /job — cadastra uma nova vaga vinculada a uma empresa
+  // Rota protegida: exige autenticação conforme regra definida no SecurityConfig
   @PostMapping
   public ResponseEntity<Object> create(@Valid @RequestBody JobEntity jobEntity) {
     try {

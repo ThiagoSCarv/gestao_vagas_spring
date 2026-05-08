@@ -17,13 +17,14 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+// Entidade JPA mapeada para a tabela "company" no banco de dados
 @Data
 @Entity
 @Table(name = "company")
 public class CompanyEntity {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
+  @GeneratedValue(strategy = GenerationType.UUID) // UUID gerado automaticamente pelo banco
   private UUID id;
 
   @NotBlank
@@ -36,14 +37,14 @@ public class CompanyEntity {
 
   @NotBlank
   @Size(min = 8, max = 100, message = "A senha deve ter entre 8 e 100 caracteres")
-  private String password;
+  private String password; // armazenado como hash BCrypt após o cadastro
 
   private String website;
   private String name;
 
   @CreationTimestamp
-  private LocalDateTime createdAt;
+  private LocalDateTime createdAt; // preenchido automaticamente na inserção
 
   @UpdateTimestamp
-  private LocalDateTime updatedAt;
+  private LocalDateTime updatedAt; // atualizado automaticamente a cada alteração
 }

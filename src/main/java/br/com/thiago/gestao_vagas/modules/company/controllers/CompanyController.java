@@ -12,6 +12,7 @@ import br.com.thiago.gestao_vagas.modules.company.useCases.CreateCompanyUseCase;
 
 import jakarta.validation.Valid;
 
+// Controller responsável pelos endpoints de empresas
 @RestController
 @RequestMapping("/company")
 public class CompanyController {
@@ -19,6 +20,8 @@ public class CompanyController {
   @Autowired
   private CreateCompanyUseCase createCompanyUseCase;
 
+  // POST /company — cadastra uma nova empresa
+  // @Valid aciona as validações declaradas em CompanyEntity antes de executar o use case
   @PostMapping
   public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity) {
     try {
