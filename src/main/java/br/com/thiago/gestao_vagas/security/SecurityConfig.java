@@ -15,8 +15,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable()) // desabilita CSRF (adequado para APIs REST stateless)
             .authorizeHttpRequests(auth -> auth
-                // rotas de cadastro são públicas — não exigem autenticação
+                // rotas de cadastro e login são públicas — não exigem autenticação
                 .requestMatchers("/candidate", "/company").permitAll()
+                .requestMatchers("/login/company").permitAll()
+                .requestMatchers("/login/candidate").permitAll()
                 // qualquer outra rota exige usuário autenticado
                 .anyRequest().authenticated()
             );
